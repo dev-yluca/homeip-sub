@@ -93,8 +93,16 @@ def main():
     print("Fetching VPN Gate...", file=sys.stderr)
     data = fetch_vpngate()
     lines = data.strip().split("\n")
-    # 去掉开头注释行和结尾 *
-    rows = [l for l in lines if not l.startswith("#") and not l.startswith("*")]
+    # VPN Gate API 格式：第一行是 #HostName,IP,... 表头（# 开头但不是注释），
+    # 最后一行是 *。不能简单过滤掉所有 # 开头行，否则会把表头也删掉。
+    rows = []
+    for l in lines:
+        if l.startswith("*"):
+            continue
+        if l.startswith("#"):
+            l = l.lstrip("#")  # 表头行：去掉开头的 #
+        if l.strip():
+            rows.append(l)
     reader = csv.reader(rows)
     header = next(reader)
     idx = {name: i for i, name in enumerate(header)}
@@ -148,7 +156,7 @@ def main():
 ''' % (name, ovpn["server"], ovpn["port"], ovpn["cipher"], ovpn["auth"], ca_lines))
 
     # proxy-groups
-    out.append('proxy-groups:')
+    out.append('proxy-groups:\n')
     out.append('''  - name: "⚡ CF前置"
     type: url-test
     url: https://www.gstatic.com/generate_204
