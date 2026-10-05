@@ -19,21 +19,21 @@ dns:
     - https://1.1.1.1/dns-query
 
 proxies:
-  - name: "jiakuan.moreyu-09.workers.dev:443"
+  - name: "hk.abee.cc.cd:443"
     type: vless
-    server: "jiakuan.moreyu-09.workers.dev"
+    server: "hk.abee.cc.cd"
     port: 443
     uuid: fcd5b2fb-2a7b-4536-bfb9-288a8411d9d3
     udp: true
     tls: true
     client-fingerprint: chrome
-    servername: "jiakuan.moreyu-09.workers.dev"
+    servername: "hk.abee.cc.cd"
     skip-cert-verify: false
     network: ws
     ws-opts:
       path: "/?ed=2048"
       headers:
-        Host: "jiakuan.moreyu-09.workers.dev"
+        Host: "hk.abee.cc.cd"
   - name: "🏠 JP-家宽-01"
     type: openvpn
     server: 211.10.52.110
@@ -1307,7 +1307,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
-      - "jiakuan.moreyu-09.workers.dev:443"
+      - "hk.abee.cc.cd:443"
   - name: "🏠 家宽自动"
     type: fallback
     url: https://www.gstatic.com/generate_204

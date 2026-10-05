@@ -9,7 +9,7 @@ import sys
 import urllib.request
 
 UUID = "fcd5b2fb-2a7b-4536-bfb9-288a8411d9d3"
-DOMAIN = "jiakuan.moreyu-09.workers.dev"
+DOMAIN = "hk.abee.cc.cd"
 VPNGATE_API = "https://www.vpngate.net/api/iphone/"
 MAX_NODES = 80  # 最多取多少个节点
 
