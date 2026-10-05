@@ -175,8 +175,179 @@ def main():
     for name, _ in nodes:
         out.append('      - "%s"\n' % name)
 
-    # rules
+    # rules - 详细分流
     out.append('''rules:
+  # ===== AI 类 -> 家宽 =====
+  - DOMAIN-SUFFIX,openai.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,chatgpt.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,anthropic.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,claude.ai,🏠 家宽自动
+  - DOMAIN-SUFFIX,google.ai,🏠 家宽自动
+  - DOMAIN-SUFFIX,gemini.google.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,x.ai,🏠 家宽自动
+  - DOMAIN-SUFFIX,grok.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,perplexity.ai,🏠 家宽自动
+  - DOMAIN-SUFFIX,midjourney.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,cohere.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,mistral.ai,🏠 家宽自动
+  - DOMAIN-SUFFIX,poe.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,character.ai,🏠 家宽自动
+  - DOMAIN-SUFFIX,stability.ai,🏠 家宽自动
+  - DOMAIN-SUFFIX,runway.ml,🏠 家宽自动
+  - DOMAIN-SUFFIX,huggingface.co,🏠 家宽自动
+  - DOMAIN-SUFFIX,copilot.microsoft.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,deepseek.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,kimi.moonshot.cn,🏠 家宽自动
+  - DOMAIN-KEYWORD,copilot,🏠 家宽自动
+  - DOMAIN-KEYWORD,chatgpt,🏠 家宽自动
+  - DOMAIN-KEYWORD,claude,🏠 家宽自动
+
+  # ===== Web3 / 加密 -> 家宽 =====
+  - DOMAIN-SUFFIX,binance.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,coinbase.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,kraken.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,okx.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,bybit.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,uniswap.org,🏠 家宽自动
+  - DOMAIN-SUFFIX,opensea.io,🏠 家宽自动
+  - DOMAIN-SUFFIX,metamask.io,🏠 家宽自动
+  - DOMAIN-SUFFIX,etherscan.io,🏠 家宽自动
+  - DOMAIN-SUFFIX,coingecko.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,coinmarketcap.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,tradingview.com,🏠 家宽自动
+  - DOMAIN-KEYWORD,binance,🏠 家宽自动
+  - DOMAIN-KEYWORD,coinbase,🏠 家宽自动
+  - DOMAIN-KEYWORD,web3,🏠 家宽自动
+  - DOMAIN-KEYWORD,crypto,🏠 家宽自动
+  - DOMAIN-KEYWORD,nft,🏠 家宽自动
+  - DOMAIN-KEYWORD,defi,🏠 家宽自动
+
+  # ===== 国外流媒体 -> 家宽 =====
+  - DOMAIN-SUFFIX,netflix.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,netflix.net,🏠 家宽自动
+  - DOMAIN-SUFFIX,youtube.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,youtu.be,🏠 家宽自动
+  - DOMAIN-SUFFIX,googlevideo.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,disneyplus.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,disney-plus.net,🏠 家宽自动
+  - DOMAIN-SUFFIX,hulu.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,hbomax.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,max.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,primevideo.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,amazonvideo.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,twitch.tv,🏠 家宽自动
+  - DOMAIN-SUFFIX,spotify.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,scdn.co,🏠 家宽自动
+  - DOMAIN-SUFFIX,apple.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,apple-cloudkit.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,itunes.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,mzstatic.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,tidal.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,pandora.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,soundcloud.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,vimeo.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,dailymotion.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,paramountplus.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,peacocktv.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,crunchyroll.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,funimation.com,🏠 家宽自动
+
+  # ===== 国外社交 / 资讯 -> 家宽 =====
+  - DOMAIN-SUFFIX,twitter.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,x.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,twimg.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,facebook.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,fbcdn.net,🏠 家宽自动
+  - DOMAIN-SUFFIX,instagram.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,cdninstagram.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,threads.net,🏠 家宽自动
+  - DOMAIN-SUFFIX,telegram.org,🏠 家宽自动
+  - DOMAIN-SUFFIX,t.me,🏠 家宽自动
+  - DOMAIN-SUFFIX,whatsapp.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,whatsapp.net,🏠 家宽自动
+  - DOMAIN-SUFFIX,discord.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,discord.gg,🏠 家宽自动
+  - DOMAIN-SUFFIX,reddit.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,redd.it,🏠 家宽自动
+  - DOMAIN-SUFFIX,medium.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,substack.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,github.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,githubusercontent.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,stackoverflow.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,wikipedia.org,🏠 家宽自动
+  - DOMAIN-SUFFIX,google.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,gstatic.com,🏠 家宽自动
+  - DOMAIN-SUFFIX,gmail.com,🏠 家宽自动
+
+  # ===== 国内 App / 网站 -> 直连 =====
+  - DOMAIN-SUFFIX,qq.com,DIRECT
+  - DOMAIN-SUFFIX,weixin.qq.com,DIRECT
+  - DOMAIN-SUFFIX,wechat.com,DIRECT
+  - DOMAIN-SUFFIX,alipay.com,DIRECT
+  - DOMAIN-SUFFIX,alipayobjects.com,DIRECT
+  - DOMAIN-SUFFIX,taobao.com,DIRECT
+  - DOMAIN-SUFFIX,tmall.com,DIRECT
+  - DOMAIN-SUFFIX,jd.com,DIRECT
+  - DOMAIN-SUFFIX,jdcdn.com,DIRECT
+  - DOMAIN-SUFFIX,360buyimg.com,DIRECT
+  - DOMAIN-SUFFIX,pinduoduo.com,DIRECT
+  - DOMAIN-SUFFIX,meituan.com,DIRECT
+  - DOMAIN-SUFFIX,meituan.net,DIRECT
+  - DOMAIN-SUFFIX,dianping.com,DIRECT
+  - DOMAIN-SUFFIX,ele.me,DIRECT
+  - DOMAIN-SUFFIX,amap.com,DIRECT
+  - DOMAIN-SUFFIX,autonavi.com,DIRECT
+  - DOMAIN-SUFFIX,baidu.com,DIRECT
+  - DOMAIN-SUFFIX,bdstatic.com,DIRECT
+  - DOMAIN-SUFFIX,bilibili.com,DIRECT
+  - DOMAIN-SUFFIX,biliapi.com,DIRECT
+  - DOMAIN-SUFFIX,biliapi.net,DIRECT
+  - DOMAIN-SUFFIX,hdslb.com,DIRECT
+  - DOMAIN-SUFFIX,douyin.com,DIRECT
+  - DOMAIN-SUFFIX,iesdouyin.com,DIRECT
+  - DOMAIN-SUFFIX,bytedance.com,DIRECT
+  - DOMAIN-SUFFIX,toutiao.com,DIRECT
+  - DOMAIN-SUFFIX,ixigua.com,DIRECT
+  - DOMAIN-SUFFIX,kuaishou.com,DIRECT
+  - DOMAIN-SUFFIX,kwai.com,DIRECT
+  - DOMAIN-SUFFIX,weibo.com,DIRECT
+  - DOMAIN-SUFFIX,sina.com.cn,DIRECT
+  - DOMAIN-SUFFIX,sinajs.cn,DIRECT
+  - DOMAIN-SUFFIX,zhihu.com,DIRECT
+  - DOMAIN-SUFFIX,zhimg.com,DIRECT
+  - DOMAIN-SUFFIX,douban.com,DIRECT
+  - DOMAIN-SUFFIX,youku.com,DIRECT
+  - DOMAIN-SUFFIX,iqiyi.com,DIRECT
+  - DOMAIN-SUFFIX,qiyi.com,DIRECT
+  - DOMAIN-SUFFIX,tencent.com,DIRECT
+  - DOMAIN-SUFFIX,tencent-cloud.com,DIRECT
+  - DOMAIN-SUFFIX,alicdn.com,DIRECT
+  - DOMAIN-SUFFIX,aliyun.com,DIRECT
+  - DOMAIN-SUFFIX,aliyuncs.com,DIRECT
+  - DOMAIN-SUFFIX,csdn.net,DIRECT
+  - DOMAIN-SUFFIX,cnblogs.com,DIRECT
+  - DOMAIN-SUFFIX,juejin.cn,DIRECT
+  - DOMAIN-SUFFIX,51cto.com,DIRECT
+  - DOMAIN-SUFFIX,oschina.net,DIRECT
+  - DOMAIN-SUFFIX,gitee.com,DIRECT
+  - DOMAIN-SUFFIX,12306.cn,DIRECT
+  - DOMAIN-SUFFIX,10086.cn,DIRECT
+  - DOMAIN-SUFFIX,10010.com,DIRECT
+  - DOMAIN-SUFFIX,189.cn,DIRECT
+  - DOMAIN-SUFFIX,cmbchina.com,DIRECT
+  - DOMAIN-SUFFIX,icbc.com.cn,DIRECT
+  - DOMAIN-SUFFIX,ccb.com,DIRECT
+  - DOMAIN-SUFFIX,boc.cn,DIRECT
+  - DOMAIN-SUFFIX,abchina.com,DIRECT
+  - DOMAIN-KEYWORD,wechat,DIRECT
+  - DOMAIN-KEYWORD,weixin,DIRECT
+  - DOMAIN-KEYWORD,alipay,DIRECT
+  - DOMAIN-KEYWORD,taobao,DIRECT
+  - DOMAIN-KEYWORD,jd.com,DIRECT
+  # 国内 IP 直连
+  - GEOIP,CN,DIRECT
+
+  # ===== 兜底 =====
   - MATCH,🏠 家宽自动
 ''')
 
