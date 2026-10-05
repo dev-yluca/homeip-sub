@@ -1,0 +1,27 @@
+# Apple TV 专用简化订阅（标准 VLESS 节点）
+# 注意：这是 CF 前置节点，出口是 Cloudflare IP，不是住宅 IP
+# 家宽住宅 IP 需要 mihomo 内核的 dialer-proxy，Apple TV 客户端不支持
+proxies:
+  - name: "jiakuan.moreyu-09.workers.dev:443"
+    type: vless
+    server: "jiakuan.moreyu-09.workers.dev"
+    port: 443
+    uuid: fcd5b2fb-2a7b-4536-bfb9-288a8411d9d3
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+    servername: "jiakuan.moreyu-09.workers.dev"
+    network: ws
+    ws-opts:
+      path: "/?ed=2048"
+      headers:
+        Host: "jiakuan.moreyu-09.workers.dev"
+
+proxy-groups:
+  - name: "🚀 代理"
+    type: select
+    proxies:
+      - "jiakuan.moreyu-09.workers.dev:443"
+
+rules:
+  - MATCH,🚀 代理
